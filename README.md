@@ -12,12 +12,14 @@
 
 - **폴더 이름**: `YYYY-MM-DD-slug` — 블로그 포스트의 파일명과 동일
 - **폴더당 README**: 해당 포스트로 돌아가는 백링크 + 데모 인덱스 포함
-- **워크스페이스**: `pnpm install` 한 번으로 모든 데모의 의존성 설치
+- **각 데모는 독립**: 데모마다 자체 `package.json` — StackBlitz 임베드 호환
 
 ## Getting Started
 
-```bash
-pnpm install
-```
+각 데모 폴더로 이동해 개별 실행합니다:
 
-각 포스트 폴더의 README를 따라 개별 데모를 실행하세요.
+```bash
+cd 2026-05-07-disney-12-principles/01-squash-and-stretch
+npm install
+npm run dev
+```

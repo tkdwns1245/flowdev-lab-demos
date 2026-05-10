@@ -1,7 +1,0 @@
-{
-  "name": "flowdev-lab-demos",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Code demos accompanying posts on FlowDev Lab.",
-  "packageManager": "pnpm@9.0.0"
-}
