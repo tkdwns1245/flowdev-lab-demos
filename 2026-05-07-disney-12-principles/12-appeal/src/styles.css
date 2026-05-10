@@ -1,0 +1,99 @@
+:root {
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 30% 20%, #1e293b 0%, #0f172a 70%);
+  color: #e2e8f0;
+  display: grid;
+  place-items: center;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  padding: 2rem;
+  max-width: 720px;
+  width: 100%;
+}
+
+.lane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.label {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-weight: 400;
+  margin-top: 0.15rem;
+  text-align: center;
+}
+
+.ground {
+  position: relative;
+  width: 160px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom: 2px solid rgba(148, 163, 184, 0.35);
+}
+
+.shadow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  margin-left: -32px;
+  width: 64px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(3px);
+}
+
+.rig {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.letter {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fbbf24;
+  user-select: none;
+}
+
+.star {
+  position: absolute;
+  top: -16px;
+  right: -14px;
+  font-size: 1.4rem;
+  color: #f97316;
+  display: inline-block;
+}
+
+@media (max-width: 600px) {
+  .stage { grid-template-columns: 1fr; }
+}

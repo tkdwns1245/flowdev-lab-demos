@@ -1,0 +1,98 @@
+:root {
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #e2e8f0;
+  display: grid;
+  place-items: center;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.lane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  text-align: center;
+  margin: 0;
+  font-weight: 600;
+}
+
+.hint {
+  color: #64748b;
+  font-weight: 400;
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene-cluttered {
+  background: #1e293b;
+}
+
+.scene-spotlight {
+  background: #0f172a;
+}
+
+.scene-spotlight .spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.scene-negative {
+  background: #0f172a;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.letter {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fbbf24;
+  display: inline-block;
+  user-select: none;
+  position: relative;
+  z-index: 2;
+}
+
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
+  .stage { grid-template-columns: 1fr; }
+}
