@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Transition } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 interface Easing {
   label: string;
@@ -41,6 +42,9 @@ const easings: Easing[] = [
   },
 ];
 
+const LETTER_WIDTH = 38;
+const TRACK_PADDING = 16;
+
 export default function App() {
   return (
     <main className="stage">
@@ -52,16 +56,32 @@ export default function App() {
 }
 
 function Lane({ label, hint, transition }: Easing) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [distance, setDistance] = useState(120);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const update = () => {
+      const available = el.clientWidth - LETTER_WIDTH - TRACK_PADDING;
+      setDistance(Math.max(40, available));
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="lane">
       <p className="label">
         {label}
         <span className="hint">{hint}</span>
       </p>
-      <div className="track">
+      <div className="track" ref={trackRef}>
         <motion.span
           className="letter"
-          animate={{ x: 180 }}
+          animate={{ x: distance }}
           transition={transition}
         >
           o
