@@ -44,6 +44,8 @@ const easings: Easing[] = [
 
 const LETTER_WIDTH = 38;
 const TRACK_PADDING = 16;
+// spring(stiffness:80, damping:8)이 약 21% 오버슈트하므로 그만큼 여유를 둔다
+const OVERSHOOT_BUFFER = 1.25;
 
 export default function App() {
   return (
@@ -64,7 +66,7 @@ function Lane({ label, hint, transition }: Easing) {
     if (!el) return;
     const update = () => {
       const available = el.clientWidth - LETTER_WIDTH - TRACK_PADDING;
-      setDistance(Math.max(40, available));
+      setDistance(Math.max(40, available / OVERSHOOT_BUFFER));
     };
     update();
     const observer = new ResizeObserver(update);

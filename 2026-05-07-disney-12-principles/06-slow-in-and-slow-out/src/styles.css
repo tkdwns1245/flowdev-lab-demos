@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
-  max-width: 480px;
+  max-width: 600px;
   width: 100%;
 }
 
@@ -67,4 +67,11 @@ body {
   color: #fbbf24;
   user-select: none;
   display: inline-block;
+}
+
+@media (max-width: 520px) {
+  .lane {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
 }
