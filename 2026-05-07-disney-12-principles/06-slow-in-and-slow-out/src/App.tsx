@@ -38,15 +38,6 @@ function cubicBezier(p1x: number, p1y: number, p2x: number, p2y: number): EaseFn
   return (x: number) => sampleY(solveX(Math.min(1, Math.max(0, x))));
 }
 
-// underdamped 스프링 step 응답 — 시작 속도 0, 절제된 오버슈트(약 +16%)
-function spring(t: number): number {
-  const zeta = 0.5;
-  const w = 10;
-  const wd = w * Math.sqrt(1 - zeta * zeta);
-  const zw = zeta * w;
-  return 1 - Math.exp(-zw * t) * (Math.cos(wd * t) + (zw / wd) * Math.sin(wd * t));
-}
-
 const easings: Easing[] = [
   {
     label: 'linear',
@@ -71,13 +62,7 @@ const easings: Easing[] = [
     hint: '양 끝이 부드러움 (slow in & out)',
     accent: '#fbbf24',
     ease: cubicBezier(0.42, 0, 0.58, 1),
-  },
-  {
-    label: 'spring',
-    hint: '탄성 — 살아있는 오버슈트',
-    accent: '#34d399',
-    ease: spring,
-  },
+  }
 ];
 
 // 잔상 점: 일정 "시간" 간격마다 찍는다 → 간격이 넓을수록 그 구간이 빠름
